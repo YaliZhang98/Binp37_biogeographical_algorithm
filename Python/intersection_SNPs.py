@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 """
+ Author: Yali Zhang 
+ 
+ Description: 
+     This program is used to filter dataset of each subregions according to intersection SNPs.
+ 
+"""
 
 name_file = open('SNPid_Oceanians','r')
 name_list = []

@@ -1,3 +1,6 @@
+# This script builds a algorithm than can localize origin of ancient individuals according to thier allele frequencies patterns.
+# It also contain visualization of results and accuracy detection part.
+
 library(nominatim)
 library(mapdataNE)
 library(plyr)
@@ -16,7 +19,7 @@ library(png)
 
 # Dataset preparation ----------------------------------------------------------
 
-Dataset <- read.csv(file="36_components_results_new.csv",header=TRUE)
+Dataset <- read.csv(file="34_gene_pool.csv",header=TRUE)
 
 dim(Dataset)
 sapply(Dataset,class)

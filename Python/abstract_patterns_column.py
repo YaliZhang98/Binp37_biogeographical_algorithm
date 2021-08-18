@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 20 11:16:39 2021
 
-@author: ZYL
+Author: Yali Zhang 
+Date : May 20
+Description: This program is used to collect pattern column from P files.
 
-abstract_patterns_column.py
 """
 
 from collections import defaultdict

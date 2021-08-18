@@ -137,7 +137,7 @@ cat 10K_name_SNP.tsv | sed "s/\"//g" > 10K_name_SNP2.tsv
 rm 10K_name_SNP.tsv
 mv 10K_name_SNP2.tsv 10K_name_SNP.tsv
 ```
-Prodece Annotation file through Python (annotation.py):  
+Produce Annotation file through Python (annotation.py):  
 ```python
 name_SNP = open('10K_name_SNP.tsv','r',encoding='UTF-8')
 annotation_origial = open('v44.3_HO_public.anno','r', encoding='UTF-8')
@@ -231,6 +231,7 @@ for line in anno:
     if line[9] == '..': # some individuals are missing country notes
         dic_country['Missing'].append(line[1])
     else:        
+        line[9] = line[9].strip()
         dic_country[line[9]].append(line[1])
 
 # print IDs of individuals from the same country
@@ -685,7 +686,7 @@ sed -i 's/ /\t/g' merge_36_small.36.Q
 # merge id file and value file 
 paste 36_ind_id merge_36_small.36.Q > 36_components_values
 ```
-3. Add annotations of each individual into the gene pool file  
+3. Add annotations of each individual into the gene pool file (components_result_add_information.py)
 ```python
 from collections import defaultdict
 
@@ -762,6 +763,7 @@ bp <- barplot(t(as.matrix(Dataset)),col = c( "brown","red3","maroon1","slateblue
               border = NA)
 
 mtext(text = c(Dataset$Continent_detail), side = 1, at = bp, line = 0, padj = 1, cex = 0.5,las = 2)
+legend("topright",inset = c(-0.15,0.2),c(test),fill = palette, bty = 1, cex = 0.6)
 
 par(mar=c(5, 4, 4, 2) + 0.1)
 dev.off()
@@ -778,7 +780,7 @@ devtools :: install_github("adeckmyn/mapdataNE") # package for map plot
 ```
 ### 2.2 Original coordinates prediction algorithm in R
 The result gene pool database should be preprocessed.   
-Transfer 34_gene_pool.tsv into csv format in Excel  
+Remove two components dominated by hominins in 36_gene_pool.tsv and save as 34_gene_pool.tsv. Then transfer tsv file into csv format in Excel.  
 Remove following columns from 34_gene_pool.csv and save file into a new file named 34_gene_pool_new.csv: #, ID, Full year. Then change the order of columns in the file as: Continent, Continent_detail, Country, Date mean in BP, Lat., Long., As_Ru_3K_0.9K_BCE, ...... (all components in gene pool) 34_gene_pool_new.csv  
 Biogeographical algorithm is recorded in R file: Biogeographical_algorithm.R
 
